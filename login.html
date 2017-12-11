@@ -1,0 +1,141 @@
+<!Doctype Html>
+<html>
+<head>
+  <title>Mereja.com login.html</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+     <link href="assets/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style type="text/css">
+ 
+  .container{
+    color: #000;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+
+  }
+  #img-upload{
+    width: 190px;
+  }
+</style>
+<body>
+
+<div class="container" id="login">
+
+  <form class="form-signin">
+    <h1 class="form-signin-heading text-muted">Sign In</h1>
+    <label><b>Email</b></label>
+    <input type="text" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label><b>Password</b></label>
+    <input type="password" class="form-control" placeholder="Password" required="">
+    <label><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" class="form-control" name="psw-repeat" required></input>
+    <br>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" id = "Sign">
+      Sign In
+    </button>
+ 
+  </form>
+  
+</div>
+<div class="container" id="info">
+ <div>
+  <form >
+    <label for="fname">City</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Subcity</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+     <label for="fname">Woreda/Kebele</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">price</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+     <label for="fname">Square foot</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">No of Bed Rooms</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+     <label for="lname">No of Shower Rooms</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+     <label for="lname">Phone number</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+     <label for="lname" >Email</label>
+    <input type="text" id="lname" class="h" name="lastname" placeholder="Your last name..">
+   <label for="lname">Pictures of The House</label>
+        <label>Upload Image</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    <input type="file" id="imgInp">
+                </span>
+            </span>
+          
+        </div>
+        <img id='img-upload'/>
+    <button id=Submit>Submit</button>
+  </form>
+</div>
+
+</div>
+
+<script type="text/javascript">
+$(document).ready( function() {
+  $("#info").hide();
+  $("#Sign").click(function(e){
+    e.preventDefault();
+     $("#login").hide();
+     $("#info").show();
+      });
+  $("#Submit").click(function(e){
+    e.preventDefault();
+  var a = $(".h").val();
+  
+  console.log(a);
+  
+});
+  
+      $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+      
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#img-upload').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });   
+  });
+</script>
+</body>
+</html>
